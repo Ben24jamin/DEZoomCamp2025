@@ -3,6 +3,8 @@ how to stand up network create volume and stand up postgress and pgadmin on netw
 
 ##create a network for the services to run on (pgadmin and postgres)
 docker network create pg-network
+docker network disconnect name #stop networ
+docker network rm name ##remove network image
 
 ##create a volume for postgress to write to 
 docker volume create --name dtc_postgress_volume_local 
