@@ -17,12 +17,18 @@ docker rm my-container #remove it
 
 
 ##stand up postgress
+
+##network
+docker network create pg-network
+
 docker run -it \
   -e POSTGRES_USER="root" \
   -e POSTGRES_PASSWORD="root" \
   -e POSTGRES_DB="ny_taxi" \
-  -v dtc_postgres_volume_local:/var/lib/postgresql/data \
+  -v ny_taxi_data:/var/lib/postgresql/data \
   -p 5432:5432 \
+  --network=pg-network \
+  --name pg-database \
   postgres:13
 
 ##stand up pgadmin
@@ -33,4 +39,8 @@ docker run -it \
   --network=pg-network \
   --name pgadmin \
     dpage/pgadmin4
+
+wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz 
+
+/workspaces/DEZoomCamp2025/1.DockerIntro
 
